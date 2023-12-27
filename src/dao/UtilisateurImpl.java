@@ -40,25 +40,36 @@ public class UtilisateurImpl implements IUtilisateur{
     @Override
     public List<Utilisateur> list() {
         List<Utilisateur> utilisateurs =new ArrayList<>();
-        String sql ="SELECT * FROM user u JOIN role r ON u.idRole = r.idRole";
+        //String sql ="SELECT * FROM user u JOIN role r ON u.idRole = r.idRole";
+        String sql = "SELECT * FROM user";
         try{
             bd.initprepar(sql);
             result = bd.executeSelect();
             while (result.next()){
                 Utilisateur util = new Utilisateur();
-                util.setId(result.getInt("u.id"));
-                util.setEmail(result.getString("u.email"));
+                util.setId(result.getInt("id"));
+                util.setEmail(result.getString("email"));
                 Role role = new Role();
-                role.setId(result.getInt("r.idRole"));
-                role.setNom(result.getString("r.nom"));
+                role.setId(result.getInt("idRole"));
+               // role.setNom(result.getString("nom"));
                 util.setId(role.getId());
+                util.setRole(role);
                 utilisateurs.add(util);
 
             }
         }catch (Exception e){
             e.printStackTrace();
         }
+
         return utilisateurs;
+    }
+
+    @Override
+    public void showUser(List<Utilisateur> us) {
+        us.forEach(utilisateur -> {
+            System.out.println("Email : "+utilisateur.getEmail());
+            System.out.println("ID : "+utilisateur.getId());
+        });
     }
 
     @Override

@@ -13,6 +13,7 @@ public class Utilisateur {
     private String email;
     private String password;
     private String passwordhasted;
+    private Role role;
     private List<String> utilisateur=new ArrayList<>();
 //CONSTRUCTEUR SANS ARG
     public Utilisateur() {
@@ -94,5 +95,13 @@ public class Utilisateur {
 
 
     }*/
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 
 }

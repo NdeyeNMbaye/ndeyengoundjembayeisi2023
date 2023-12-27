@@ -32,8 +32,9 @@ public class Main {
         //   u.setIdR(role);
         // }
 
-       iutilisateur.ajouterUser(iutilisateur);
+      iutilisateur.ajouterUser(iutilisateur);
        iutilisateur.list();
+       iutilisateur.showUser(iutilisateur.list());
       //  private RoleUser role;
 
     }
